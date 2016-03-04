@@ -4,6 +4,8 @@ import com.sun.org.apache.xpath.internal.operations.Mod;
 import models.RawModel;
 import renderEngine.Loader;
 import textures.ModelTexture;
+import textures.TerrainTexture;
+import textures.TerrainTexturePack;
 
 public class Terrain {
 
@@ -13,13 +15,24 @@ public class Terrain {
     private float x;
     private float z;
     private RawModel model;
-    private ModelTexture texture;
+    private TerrainTexturePack texturePack;
+    private TerrainTexture blendMap;
 
-    public Terrain(int gridX, int gridZ, Loader loader, ModelTexture texture) {
-        this.texture = texture;
+    public Terrain(int gridX, int gridZ, Loader loader, TerrainTexturePack texturePack,
+                   TerrainTexture blendMap) {
+        this.texturePack = texturePack;
+        this.blendMap = blendMap;
         this.x = gridX * SIZE;
         this.z = gridZ * SIZE;
         this.model = generateTerrain(loader);
+    }
+
+    public TerrainTexturePack getTexturePack() {
+        return texturePack;
+    }
+
+    public TerrainTexture getBlendMap() {
+        return blendMap;
     }
 
     public float getX() {
@@ -44,14 +57,6 @@ public class Terrain {
 
     public void setModel(RawModel model) {
         this.model = model;
-    }
-
-    public ModelTexture getTexture() {
-        return texture;
-    }
-
-    public void setTexture(ModelTexture texture) {
-        this.texture = texture;
     }
 
     private RawModel generateTerrain(Loader loader){
