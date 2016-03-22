@@ -64,13 +64,13 @@ public class MainGameLoop {
         Terrain terrain1 = new Terrain(-1, -1, loader, texturePack, blendMap);
         Terrain terrain2 = new Terrain(0, -1, loader, texturePack, blendMap);
 
-        Camera camera = new Camera();
         //camera.setPosition(new Vector3f(0, 1, 0));
 
         RawModel bunnyModel = ObjLoader.loadObjModel("stanfordBunny", loader);
         ModelTexture bunnyTexture = new ModelTexture(loader.loadTexture("white"));
         TexturedModel stanfordBunny = new TexturedModel(bunnyModel, bunnyTexture);
-        Player player = new Player(stanfordBunny, new Vector3f(100, 0, -50), 0, 0, 0, 1);
+        Player player = new Player(stanfordBunny, new Vector3f(100, 0, -50), 0, 180, 0, 1);
+        Camera camera = new Camera(player);
 
         MasterRenderer renderer = new MasterRenderer();
         while (!Display.isCloseRequested()) {
