@@ -50,7 +50,7 @@ public class MainGameLoop {
                     0, random.nextFloat() * -600), 0, 0, 0, 0.6f));
         }
 
-        Entity entity = new Entity(texturedModel, new Vector3f(0, 0, -50), 0, 0, 0, 1);
+        Entity entity = new Entity(texturedModel, new Vector3f(100, 0, -100), 0, 0, 0, 1);
         entities.add(entity);
         Light light = new Light(new Vector3f(0, 0, -20), new Vector3f(1, 1, 1));
 
@@ -65,7 +65,7 @@ public class MainGameLoop {
         Terrain terrain2 = new Terrain(0, -1, loader, texturePack, blendMap);
 
         Camera camera = new Camera();
-        camera.setPosition(new Vector3f(0, 1, 0));
+        //camera.setPosition(new Vector3f(0, 1, 0));
 
         RawModel bunnyModel = ObjLoader.loadObjModel("stanfordBunny", loader);
         ModelTexture bunnyTexture = new ModelTexture(loader.loadTexture("white"));
